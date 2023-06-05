@@ -113,6 +113,16 @@
           ]
         }
       }
+    },
+    "push-container": {
+      "executor": "@nx-tools/nx-container:build",
+      "options": {
+        "push": true,
+        "tags": [
+          "ghcr.io/9hyd5xyxxb/telegram-shop/shop-frontend:latest",
+          "ghcr.io/9hyd5xyxxb/telegram-shop/shop-frontend:v1"
+        ]
+      }
     }
   }
 }
