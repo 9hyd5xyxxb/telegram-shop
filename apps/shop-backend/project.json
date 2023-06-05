@@ -80,12 +80,19 @@
       "executor": "@nx-tools/nx-container:build",
       "options": {
         "push": true,
+        "images": [
+            "ghcr.io/9hyd5xyxxb/telegram-shop/shop-backend"
+          ],
         "tags": [
-          "ghcr.io/9hyd5xyxxb/telegram-shop/shop-backend:latest",
-          "ghcr.io/9hyd5xyxxb/telegram-shop/shop-backend:v1"
+          "type=ref,event=branch",
+          "type=ref,event=tag",
+          "type=ref,event=pr",
+          "type=semver,pattern={{version}}",
+          "type=semver,pattern={{major}}.{{minor}}",
+          "type=semver,pattern={{major}}",
+          "type=sha"
         ]
       }
     }
-  },
-  "tags": []
+  }
 }
