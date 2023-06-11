@@ -5,7 +5,7 @@
   "scripts": {
     "nx": "./node_modules/.bin/nx",
     "build": "nx run-many --targets=build --all",
-    "container": "nx run-many --targets=container --all --parallel=false --skip-nx-cache"
+    "container": "nx run-many --targets=container --push=true --all --parallel=false --skip-nx-cache"
   },
   "private": true,
   "dependencies": {

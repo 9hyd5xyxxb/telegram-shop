@@ -64,7 +64,6 @@
       
       "options": {
         "engine": "docker",
-        "push": true,
         "metadata": {
           "images": ["ghcr.io/9hyd5xyxxb/telegram-shop/shop-backend"],
           "tags": [

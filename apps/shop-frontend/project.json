@@ -101,7 +101,6 @@
       "executor": "@nx-tools/nx-container:build",
       "options": {
         "engine": "docker",
-        "push": true,
         "metadata": {
           "images": ["ghcr.io/9hyd5xyxxb/telegram-shop/shop-frontend"],
           "tags": [
