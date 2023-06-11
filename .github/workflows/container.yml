@@ -3,25 +3,19 @@ name: NodeJS with Webpack
 on:
   push:
     branches: [ "main" ]
-#   pull_request:
-#     branches: [ "main" ]
 
 jobs:
   install-nx:
     name: Install Nx
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [18.x]
-        # build-coomand: ["shop-backend", "shop-frontend"]
-
     steps:
     - uses: actions/checkout@v3
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
-        node-version: ${{ matrix.node-version }}
+        node-version: 18.x
+        cache: 'npm'
     - name: Install dependencies
       run: npm ci
     - name: Build apps
@@ -34,8 +28,7 @@ jobs:
         username: ${{ github.actor }}
         password: ${{ secrets.GIT_TOKEN }}
 
-    # - name: Build frontend
-    #   run: ./node_modules/.bin/nx run shop-frontend:push-container
+    - name: 'Build images'
+      run: INPUT_GITHUB_TOKEN=${{ secrets.GIT_TOKEN }} npm run container
 
-    - name: Build backend
-      run: ./node_modules/.bin/nx run shop-backend:push-container
+

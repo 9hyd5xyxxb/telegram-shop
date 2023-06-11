@@ -101,9 +101,9 @@
       "executor": "@nx-tools/nx-container:build",
       "options": {
         "engine": "docker",
+        "push": true,
         "metadata": {
-          "images": ["telegram-shop/shop-frontend"],
-          "load": true,
+          "images": ["ghcr.io/9hyd5xyxxb/telegram-shop/shop-frontend"],
           "tags": [
             "type=schedule",
             "type=ref,event=branch",
@@ -112,16 +112,6 @@
             "type=sha,prefix=sha-"
           ]
         }
-      }
-    },
-    "push-container": {
-      "executor": "@nx-tools/nx-container:build",
-      "options": {
-        "push": true,
-        "tags": [
-          "ghcr.io/9hyd5xyxxb/telegram-shop/shop-frontend:latest",
-          "ghcr.io/9hyd5xyxxb/telegram-shop/shop-frontend:v1"
-        ]
       }
     }
   }

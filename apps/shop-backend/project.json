@@ -61,11 +61,12 @@
     },
     "container": {
       "executor": "@nx-tools/nx-container:build",
+      
       "options": {
         "engine": "docker",
+        "push": true,
         "metadata": {
-          "images": ["telegram-shop/shop-backend"],
-          "load": true,
+          "images": ["ghcr.io/9hyd5xyxxb/telegram-shop/shop-backend"],
           "tags": [
             "type=schedule",
             "type=ref,event=branch",
@@ -74,24 +75,6 @@
             "type=sha,prefix=sha-"
           ]
         }
-      }
-    },
-    "push-container": {
-      "executor": "@nx-tools/nx-container:build",
-      "options": {
-        "push": true,
-        "images": [
-            "ghcr.io/9hyd5xyxxb/telegram-shop/shop-backend"
-          ],
-        "tags": [
-          "type=ref,event=branch",
-          "type=ref,event=tag",
-          "type=ref,event=pr",
-          "type=semver,pattern={{version}}",
-          "type=semver,pattern={{major}}.{{minor}}",
-          "type=semver,pattern={{major}}",
-          "type=sha"
-        ]
       }
     }
   }

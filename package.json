@@ -5,9 +5,7 @@
   "scripts": {
     "nx": "./node_modules/.bin/nx",
     "build": "nx run-many --targets=build --all",
-    "push-container": "nx run-many --targets=push-container --all --parallel=false",
-    "push-container:shop-backend": "nx run shop-backend:push-container",
-    "push-container:shop-frontend": "nx run shop-frontend:push-container"
+    "container": "nx run-many --targets=container --all --parallel=false --skip-nx-cache"
   },
   "private": true,
   "dependencies": {
