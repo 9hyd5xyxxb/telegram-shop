@@ -19,7 +19,10 @@
           "apps/shop-frontend/src/favicon.ico",
           "apps/shop-frontend/src/assets"
         ],
-        "styles": ["apps/shop-frontend/src/styles.scss"],
+        "styles": [
+          "apps/shop-frontend/src/styles.scss",
+          "libs/ui/src/lib/styles/_index.scss"
+        ],
         "scripts": []
       },
       "configurations": {
