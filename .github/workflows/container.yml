@@ -1,4 +1,4 @@
-name: NodeJS with Webpack
+name: Build production containers and deploy to vps
 
 on:
   push:
@@ -8,7 +8,6 @@ jobs:
   install-nx:
     name: Install Nx
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v3
     - name: Use Node.js ${{ matrix.node-version }}
@@ -31,4 +30,20 @@ jobs:
     - name: 'Build images'
       run: INPUT_GITHUB_TOKEN=${{ secrets.GIT_TOKEN }} npm run container
 
-
+  deploy:
+    name: Deploy to server
+    runs-on: ubuntu-latest
+    needs: [install-nx]
+    steps:
+      - name: Executing remote command
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          USERNAME: ${{ secrets.USERNAME }}
+          PORT: ${{ secrets.PORT }}
+          KEY: ${{ secrets.SSH_KEY }}
+          script: |
+            cd ~/telegram-shop
+            docker compose down
+            docker compose build --pull --no-cache
+            docker compose up -d
